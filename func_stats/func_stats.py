@@ -15,7 +15,7 @@ class CreateStats(OrderedDict):
         self.auto_increment = 1
         self.marker_code = {}
 
-    def mark(self, marker_name=None, current_frame=None):
+    def point(self, marker_name=None, current_frame=None):
 
         if marker_name is None:
             marker_name = self.auto_increment
