@@ -42,13 +42,12 @@ class CreateStats(OrderedDict):
         self['_end'] = time()
 
     def display(self):
-        x = PrettyTable(["Marker", "Method", "Line", "Hits", "Avg Time", "Runtime", "Percent"])
+        x = PrettyTable(["Marker", "Line", "Hits", "Avg Time", "Runtime", "Percent"])
         x.align["Marker"] = "l"
         x.align["Hits"] = "r"
         x.align["Avg Time"] = "r"
         x.align["Runtime"] = "r"
         x.align["Percent"] = "r"
-        x.align["Method"] = "l"
         x.align["Line"] = "r"
         x.padding_width = 1
         if '_end' not in self:
@@ -59,7 +58,6 @@ class CreateStats(OrderedDict):
                 continue
             x.add_row((
                 marker,
-                self.marker_code[marker][2],
                 self.marker_code[marker][1],
                 len(runtimes),
                 "{0:.5f}".format(sum(runtimes) / float(len(runtimes))),
